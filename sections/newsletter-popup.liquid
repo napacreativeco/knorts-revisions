@@ -1,0 +1,97 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+<script>
+window.addEventListener("load",  function(event) {
+        const email_signup = document.querySelector('#email_signup');
+        const popupbtn = document.querySelector('#popup-btn');
+        const popupContent = document.querySelector('#popup1 .content');
+        var dupNode = email_signup.cloneNode(true);
+
+        popupContent.appendChild(dupNode);
+        popupbtn?.click();
+   })
+</script>
+{%- style -%}
+    .popup {
+        margin: 100px auto;
+        background-color: #313131;
+        max-width: 325px;
+    }
+    .newsletter-popup-text__heading {
+      font-family: DINPro;
+      word-spacing: 0px;
+      font-size: 12px;
+      width: 177px;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+    .newsletter-popup-img {
+      margin-bottom: 5px;
+    }
+    .popup-btn {
+      display: none;
+    }
+    .overlay {
+      backdrop-filter: blur(10px);
+    }
+    @media screen and (min-width: 751px) {
+    
+    }
+    @media screen and (max-width: 750px) {
+ 
+    }
+{%- endstyle -%}
+
+<a id="popup-btn" class="popup-btn" href="#popup1">open</a>
+<div id="popup1" class="overlay">
+    	<div class="popup">
+    		<a class="close" href="#">&times;</a>
+    		<div class="content">
+                {%- if section.settings.custom_text_title != blank -%}
+                      <h2 class="newsletter-popup-text__heading h1">
+                        {{ section.settings.custom_text_title | escape }}
+                      </h2>
+                {%- endif -%}
+                {%- if section.settings.image != blank -%}
+                  <img  class="newsletter-popup-img" srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+                    {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+                    {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                    {%- if section.settings.image.width >= 720 -%}{{ section.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                    {%- if section.settings.image.width >= 940 -%}{{ section.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                    {%- if section.settings.image.width >= 1070 -%}{{ section.settings.image | img_url: '1070x' }} 1070w{%- endif -%}"
+                    src="{{ section.settings.image | img_url: '533x' }}"
+                    sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ section.settings.image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ section.settings.image.width }}"
+                    height="{{ section.settings.image.height }}"
+                  >
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+            </div>
+    	</div>
+</div>
+{% schema %}
+  {
+    "name": "newsletter popup",
+    "settings": [
+      {
+        "id": "custom_text_title",
+        "type": "text",
+        "label": "Text box heading",
+        "default": "SIGN UP FOR OUR NEWSLETTER RECEIVE 10% OFF"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Main picture"
+      }
+    ],
+    "presets": [
+      {
+      "name": "newsletter-popup",
+      "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

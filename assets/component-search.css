@@ -1,0 +1,87 @@
+
+.search__input.field__input {
+  background: transparent;
+  padding: 0 5px;
+  color: #000;
+  height: 28px;
+  border: none;
+  min-width: 18rem;
+}
+
+.search-modal__close-button.modal__close-button {
+  height: auto;
+  width: auto;
+}
+
+.search-modal__close-button.modal__close-button svg * {
+  fill: #000;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-modal__close-button .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.search__button:focus-visible {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
+.search__button:focus {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
+.search__button:not(:focus-visible):not(.focused){
+  box-shadow: inherit;
+  background-color: inherit;
+}
+
+.search__button .icon {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+/* Remove extra spacing for search inputs in Safari */
+input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.search-modal__content .field__label {
+  color: #000;
+  display: flex;
+  padding-left: 1rem;
+  align-items: center;
+}
+
+.search-modal__content .search__button {
+  padding: 0 1rem;
+  min-width: auto;
+  min-height: 38px;
+  margin-left: 1rem;
+  border-left: 1px solid #000;
+}
+
+@media screen and (max-width: 749px) {
+  .search-modal__content .search__button {
+    font-size: 12px;
+  }
+  .search__input.field__input {
+    min-width: auto;
+  }
+}
+
+.template-search .page-full-width h1 {
+  margin: 25px 0 35px;
+}
+
+.template-search predictive-search[open] .predictive-search, 
+.template-search predictive-search[loading] .predictive-search {
+  display: none;
+}

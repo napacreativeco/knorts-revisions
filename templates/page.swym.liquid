@@ -1,0 +1,21 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+<div class="page-full-width">
+    <h2 class="page-title">{{ page.title }}</h2>
+</div>
+<div class="collection wishlist-wrapper">
+  {{ page.content }}
+  <div id="wishlist-items-container">
+  </div>
+
+  <div class="loadmore-wrapper hidden">
+    <button id="LoadMore" class="link link--text">{{ 'general.pagination.load_more' | t | upcase }}</button>
+    <div class="loader--ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+  
+<script src="{{ 'swym-wishlist.js' | asset_url }}" async="async"></script>

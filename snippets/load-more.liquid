@@ -1,0 +1,9 @@
+<load-more class="loadmore-wrapper">
+  <button id="LoadMore" class="link link--text" data-current-page="{{ paginate.current_page }}" 
+    data-maxpage="{{ paginate.pages }}">{{ 'general.pagination.load_more' | t | upcase }}</button>
+  <div class="loader--ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</load-more>

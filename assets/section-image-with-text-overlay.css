@@ -1,0 +1,29 @@
+
+.image-with-text-overlay .banner__box .link {
+  margin-top: 3px;
+}
+
+@media only screen and (min-width: 750px) {
+  .image-with-text-overlay .banner__content {
+    justify-content: center;
+  }
+
+  .image-with-text-overlay .banner__content .banner__box {
+    display: flex;
+    align-items: center;
+  }
+
+  .image-with-text-overlay .content-right {
+    max-width: 632px;
+    padding: 5px 0;
+    font-size: 13px;
+    border-left: 1px solid #FFFFFF;
+    padding-left: 20px;
+    margin: 0 0 0 20px;
+  }
+
+  .image-with-text-overlay .link {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+}

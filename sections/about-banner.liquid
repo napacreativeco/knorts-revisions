@@ -1,0 +1,108 @@
+{{ 'section-about-banner.css' | asset_url | stylesheet_tag }}
+<div class="about-banner-wrapper">
+  {%- if section.settings.image != blank or section.settings.image_mobile != blank -%}
+    <div class="about-banner__media {% if section.settings.image_mobile != blank %} small-hide {% endif %}">
+      {%-liquid
+          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          assign sizes = "100vw"
+        -%}
+      {{ section.settings.image | image_url: width: 1500 | image_tag:
+          loading: 'lazy',
+          width: section.settings.image.width,
+          height: image_height,
+          class: image_class,
+          sizes: sizes,
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          alt: section.settings.image.alt | escape
+        }}
+    </div>
+    {%- if section.settings.image_mobile != blank -%}
+      <div class="about-banner__media medium-hide large-up-hide">
+        {%-liquid
+            assign image_height = section.settings.image_mobile.width | divided_by: section.settings.image_mobile.aspect_ratio
+            assign sizes = "100vw"
+          -%}
+        {{ section.settings.image_mobile | image_url: width: 1500 | image_tag:
+            loading: 'lazy',
+            width: section.settings.image_mobile.width,
+            height: image_height,
+            class: image_class,
+            sizes: sizes,
+            widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+            alt: section.settings.image_mobile.alt | escape
+          }}
+      </div>
+    {% endif %}
+  {%- else -%}
+    <div class="about-banner__media media{% if section.settings.image == blank %} placeholder{% endif %}">
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+
+  <div class="about-banner__content page-full-width">
+    <div class="about-banner__box content-container content-container--full-width-mobile">
+ 
+      <h1 class="about-banner__heading h0">
+        {{ section.settings.heading }}
+      </h1>
+      <div class="about-banner__text">
+        <div class="about-description">
+          {{ section.settings.description }}
+        </div>
+        {% if section.settings.secondary_description != blank %}
+          <div class="secondary-description small-hide">
+            {{ section.settings.secondary_description }}
+          </div> 
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if section.settings.secondary_description != blank %}
+  <div class="secondary-description medium-hide large-up-hide">
+    {{ section.settings.secondary_description }}
+  </div> 
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Banner",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image mobile"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "About",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "richtext",
+        "id": "secondary_description",
+        "label": "Secondary description"
+      }
+    ],
+    "presets": [
+      {
+      "name": "about-banner",
+      "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

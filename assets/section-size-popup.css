@@ -1,0 +1,67 @@
+ .modal-close {
+    font-size:20px;
+    float:right;
+  }
+  .modal-toggle {
+            position: fixed;
+        height: 0px;
+        width: 0px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        opacity: 0; 
+  }
+    .modal {
+        pointer-events: none;
+        visibility: hidden;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        opacity: 0;
+        z-index: 999;
+        background-color: #565656ad;
+        --tw-bg-opacity: 0.4;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-property: transform, opacity, visibility;
+        overflow-y: hidden;
+        overscroll-behavior: contain;
+        align-items: center;
+        backdrop-filter: blur(10px);
+    } 
+    .modal-toggle:checked + .modal {
+      pointer-events: auto;
+      visibility: visible;
+      opacity: 1;
+    }
+  .modal-close {
+    color: #fff
+  }
+.modal-box {
+      max-height: calc(100vh - 15em);
+    --tw-bg-opacity: 1;
+    background-color: #000;
+    padding: 1.5rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    width: 90%;
+    max-width: 80rem;
+    --tw-scale-x: .9;
+    --tw-scale-y: .9;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    border-top-left-radius: var(--rounded-box, 1rem);
+    border-top-right-radius: var(--rounded-box, 1rem);
+    border-bottom-left-radius: var(--rounded-box, 1rem);
+    border-bottom-right-radius: var(--rounded-box, 1rem);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    margin-bottom: 5%;
+}

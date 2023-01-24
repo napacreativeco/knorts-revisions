@@ -1,0 +1,20 @@
+<div class="newsletter">
+  <form id="email_signup" class="{{ form_class }} klaviyo_gdpr_embed_{{ list_id }}" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+    <input type="hidden" name="g" value="{{ list_id }}">
+    <input type="hidden" name="$fields" value="$consent">
+    <input type="hidden" name="$list_fields" value="$consent">
+
+    <div class="klaviyo_field_group newsletter-form-main">
+      <input class="newsletter-form-inp field__input" type="email" name="email" id="{{ input_id}}" 
+      placeholder="{{ 'newsletter.label' | t }}" />
+      <div class="klaviyo_form_actions">
+        <button type="submit" class="button klaviyo_submit_button  newsletter-form-btn">{{ 'newsletter.button_label' | t }}</button>
+      </div>
+    </div>
+
+    <div class="klaviyo_messages">
+      <div class="success_message" style="display:none;"></div>
+      <div class="error_message" style="display:none;"></div>
+    </div>
+  </form>
+</div>

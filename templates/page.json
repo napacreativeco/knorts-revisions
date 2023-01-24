@@ -1,0 +1,49 @@
+{
+    "sections": {
+        "main": {
+            "type": "main-page",
+            "disabled": true,
+            "settings": {
+                "padding_top": 100,
+                "padding_bottom": 40
+            }
+        },
+        "5060725f-92c9-40c4-aed3-fcd5d9b727bc": {
+            "type": "about-banner",
+            "settings": {
+                "image": "shopify:\/\/shop_images\/Mask_group_8917b092-46db-4641-8fd3-a606bdadb3ea_1.png",
+                "image_mobile": "shopify:\/\/shop_images\/Mask_group_1_22e6301b-02a2-4654-94f2-23a82c45a79c_1.png",
+                "heading": "About",
+                "description": "<p>Knorts is a premium knit denim line handmade with indigo-dyed yarn. It is a fresh denim experience that maintains an unusual knitted aesthetic only fit to be the individualist’s uniform. Each garment offers the most intimate pleasure of unrestricted movement while accentuating the most flattering curves of your body.<\/p>",
+                "secondary_description": "<p>Designed in Los Angeles since inception, the denim knitwear concept emerged with the intention of mimicking the city’s laid-back atmosphere through maintaining denim’s famous look while leaving behind denim’s infamous feel. The brand's re-imagination of classic silhouettes into relaxed knitted denim has been embraced by the venturer who refuses adherence to society’s restrictions. Each garment is thoughtfully designed to build their wardrobe’s foundation on textured layers perfect for varying climates of the next destination.<\/p>"
+            }
+        },
+        "b148e9cc-8b9b-4e5c-95b8-1489a3622811": {
+            "type": "about-2nd",
+            "settings": {
+                "image": "shopify:\/\/shop_images\/CREATIVE_JBZL245_4.5MM_5_1_1.png",
+                "heading": "ARTISANSHIp",
+                "first_heading": "FULLY FASHIONED<br>KNITWEAR",
+                "description": "<p>Since inception, Knorts' denim knitwear designs have been produced by applying the fully fashioned knitting technique where bespoke shaped structures are knitted by increasing and decreasing the number of needles used to knit each row. By this we mean each component of the garment is produced in the most cost-effective manner with each piece being knitted to the exact size and shape needed, without requiring further cutting and trimming. In other words, the components of our designs are not cut from large rolls of fabric, but rather the fabric pieces are knitted to exact measurements from cones of yarn by hand on a loom in LA.<\/p>",
+                "secondary_heading": "HANDLOOM<br>KNITTING",
+                "secondary_description": "<p>Handloom knitting is rooted in history and is manual by nature. Originating sometime during the 1500s in the United Kingdom, handloom knitting was developed for knitting socks for the royals. The handloom machine consists of one or two \"flat beds\" with a limited \"bed of needles\". Cones of yarn are threaded through the machine by hand, much like the process of threading a sewing machine. Once threaded, the machine's \"carriage\" is pushed by hand from left to right. Each push across the bed of needles manually knits a single row at a time. Depending on the complexity of the design, it can take many hours to complete a single garment.<\/p>",
+                "third_heading": "RAW DENIM<br>YARN",
+                "third_description": "<p>Knorts uses the finest indigo-dyed denim yarn. It's the same thread used to produce tightly woven denim; the material used to manufacture jeans. Denim is denim because of the dye process the individual yarns go through before they're woven into the fabric famously used to produce jeans. In short, the yarns are run through the dye very quickly, which prevents the dye from soaking through to the core of the thread. This leaves the center of the thread white (or \"ecru\"), which exposes over time through years of wear or through special treatments unique to the denim industry. Read more about denim knitwear here.<\/p>"
+            }
+        },
+        "60a589cd-89b2-4017-bc95-4b4b1689dc37": {
+            "type": "instafeed",
+            "settings": {
+                "heading_size": 20,
+                "feed_width": 100,
+                "html_area": "<h2 style=\"margin-left:10px;\">@_KNORTS<\/h2>"
+            }
+        }
+    },
+    "order": [
+        "main",
+        "5060725f-92c9-40c4-aed3-fcd5d9b727bc",
+        "b148e9cc-8b9b-4e5c-95b8-1489a3622811",
+        "60a589cd-89b2-4017-bc95-4b4b1689dc37"
+    ]
+}

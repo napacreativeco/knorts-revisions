@@ -1,0 +1,17 @@
+.image-with-text-column-card__info {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.296) 50.57%, rgba(0, 0, 0, 0) 100%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  min-height: 325px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.image-with-text-column-card__info  h3 {
+  margin: 0 0 3px;
+}

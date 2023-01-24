@@ -1,0 +1,43 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- liquid
+  assign products_to_display = collection.all_products_count
+
+  if collection.all_products_count > products_to_show
+    assign products_to_display = products_to_show
+  endif
+
+  assign columns_mobile_int = columns_mobile | plus: 0
+-%}
+
+<section class="product-related">
+  <div class="collection section-{{ section.id }}-padding collection--full-width">
+    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-full-width">
+      {%- if heading != blank -%}
+        <h2 class="title">{{ heading| upcase }}</h2>
+      {%- endif -%}
+    </div>
+    <div class="">
+      <ul id="Slider-{{ section.id }}" class="grid product-grid contains-card{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} 
+        grid--{{ columns_desktop }}-col-desktop grid--{{ columns_mobile }}-col-tablet-down" role="list">
+        {%- for product in collection.products limit: products_to_display -%}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: "portrait",
+              show_secondary_image: true,
+              section_id: section.id
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>

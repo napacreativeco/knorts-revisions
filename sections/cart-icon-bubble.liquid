@@ -1,0 +1,7 @@
+<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+{%- if cart != empty -%}
+  <a href="{{ routes.cart_url }}" class="header__menu-item link focus-inset" id="cart-icon-bubble">
+    {{ 'templates.cart.cart' | t }}
+    <span aria-hidden="true">({{ cart.item_count }})</span>
+  </a>
+{%- endif -%}
