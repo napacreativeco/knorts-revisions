@@ -7,8 +7,8 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   <head>{% render 'pagefly-head' %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content=""> 
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -61,6 +61,13 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
         font-size: 12px !important;
       }
     </style>
+
+    {% comment %} 
+    * Throne
+    * Temporary Code injection
+    * source: /snippets/throne--css__temp_additions.liquid
+    {% endcomment %}
+    {% render 'throne--css__temp_additions' %}
   </head>
 
   {% assign metafields = collection.metafields.knorts %}
