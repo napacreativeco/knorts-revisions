@@ -1,0 +1,21 @@
+# Ignore .DS_store file
+.DS_Store
+
+# Ignore cache
+/.sass-cache
+/.cache
+
+# Ignore bundler config
+/.bundle
+
+config.yml
+
+/src
+
+node_modules
+
+package-lock.json
+
+package.json
+
+gulpfile.js

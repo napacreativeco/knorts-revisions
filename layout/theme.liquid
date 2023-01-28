@@ -60,10 +60,11 @@
 
     {% comment %} 
     * Throne
-    * Temporary Code injection
-    * source: /snippets/throne--css__temp_additions.liquid
+    * Code from Throne. Using Gulp stack to compile to throne.css
+    * source: theme_directory/src/css/
+    * destination: assets/throne.css
     {% endcomment %}
-    {% render 'throne--css__temp_additions' %}
+    <link rel="stylesheet" href="{{ 'throne.css' | asset_url }}">
   </head>
 
   {% assign metafields = collection.metafields.knorts %}
