@@ -111,7 +111,9 @@
 
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
-                    {%- assign lazy_load = true -%}
+                    {% comment %}
+                      {%- assign lazy_load = true -%}
+                    {% endcomment %}
                   {%- endif -%}
 
                   <li class="grid__item ajax-item">
@@ -131,9 +133,12 @@
               {%- endfor -%}
             </ul>
     
-            {% if paginate.pages > 1 %}
-              {%- render 'load-more', paginate: paginate -%}
-            {% endif %}
+            <div>
+              {% if paginate.pages > 1 %}
+                {%- render 'load-more', paginate: paginate -%}
+              {% endif %}
+            </div>
+
 
           </div>
         {%- endif -%}
