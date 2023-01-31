@@ -1,14 +1,21 @@
 {
-    "sections": {
-      "main": {
-        "type": "main-page",
-        "settings": {
-          "padding_top": 28,
-          "padding_bottom": 28
-        }
+  "sections": {
+    "a4460141-ecbc-41f2-bb54-b4ac43e4f029": {
+      "type": "home--hero-block",
+      "settings": {
+        "section_description": "Knitted, not woven."
       }
     },
-    "order": [
-      "main"
-    ]
-  }
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "a4460141-ecbc-41f2-bb54-b4ac43e4f029",
+    "main"
+  ]
+}
