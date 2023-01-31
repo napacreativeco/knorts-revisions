@@ -1,8 +1,15 @@
-<style></style>
+<style>
+  .hero--block {
+    min-height: 100vh;
+  }
+  .hero--block a {
+    color: #fff;
+  }
+</style>
 
 
 {% comment %} 1 {% endcomment %}
-<div class="hero--block--one block--image-banner" style="background: url('{{ template.settings.section_background_image | img_url }}'); background-size: cover;">
+<div class="hero--block block--image-banner" style="background: url('{{ section.settings.section_background_image | img_url }}'); background-size: cover;">
   <div class="row-wrapper">
     <div class="content-wrapper">
       <h2>{{ section.settings.section_title }}</h2>
