@@ -1,10 +1,13 @@
+<style></style>
+
+
 {% comment %} 1 {% endcomment %}
-<div class="hero--block--one block--image-banner" style="background: url('{{ template.settings.section_image | img_url }}'); background-size: cover;">
+<div class="hero--block--one block--image-banner" style="background: url('{{ template.settings.section_background_image | img_url }}'); background-size: cover;">
   <div class="row-wrapper">
     <div class="content-wrapper">
       <h2>{{ section.settings.section_title }}</h2>
       <p>{{ section.settings.section_description }}</p>
-      <a href="{{ section.settings.section__link }}" title="{{ section.settings.section_title }}">
+      <a href="{{ section.settings.section_link }}" title="{{ section.settings.section_title }}">
         {{ 'Shop' | escape }}
       </a>
     </div>
@@ -21,22 +24,22 @@
     "settings": [
       {
         "type": "text",
-        "id": "heading",
+        "id": "section_title",
         "default": "Denim done different",
-        "label": "Headline"
+        "label": "Title"
       }, {
         "type": "text",
         "id": "section_description",
-        "label": "Sub-headline"
+        "label": "Text"
       }, {
         "type": "image_picker",
-        "id": "image",
+        "id": "section_background_image",
         "label": "Background Image"
       }, {
         "type": "url",
-        "id": "url",
-        "label": "URL",
-        "info": "Select a destination for the Call To Action"
+        "id": "section_link",
+        "label": "Destination",
+        "info": "Select a page or URL for the Call To Action"
       }
     ],
     "blocks": [],
