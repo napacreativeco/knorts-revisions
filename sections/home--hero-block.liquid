@@ -11,24 +11,10 @@
   </div>
 </div>
 
-{% comment %} 2 {% endcomment %}
-<div class="hero--block--two block--image-banner" style="background: url('{{ template.settings.section_image | img_url }}'); background-size: cover;">
-  <div class="row-wrapper">
-    <div class="content-wrapper">
-      <h2>{{ section.settings.section_title }}</h2>
-      <p>{{ section.settings.section_description }}</p>
-      <a href="{{ section.settings.section__link }}" title="{{ section.settings.section_title }}">
-        {{ 'Shop' | escape }}
-      </a>
-    </div>
-  </div>
-</div>
-
-
 
 {% schema %}
   {
-    "name": "Hero Blocks",
+    "name": "Hero Block",
     "tag": "section",
     "class": "section",
     "max_blocks": 3,
@@ -36,40 +22,27 @@
       {
         "type": "text",
         "id": "heading",
-        "default": "About",
-        "label": "Heading"
+        "default": "Denim done different",
+        "label": "Headline"
+      }, {
+        "type": "text",
+        "id": "section_description",
+        "label": "Sub-headline"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      }, {
+        "type": "url",
+        "id": "url",
+        "label": "URL",
+        "info": "Select a destination for the Call To Action"
       }
     ],
-
-    "blocks": [
-      {
-        "type": "hero",
-        "name": "Hero Block",
-        "settings": [
-          {
-            "type": "text",
-            "id": "section_description",
-            "label": "Text"
-          }, {
-            "type": "text",
-            "id": "section_title",
-            "label": "Title"
-          }, {
-            "type": "url",
-            "id": "url",
-            "label": "URL",
-            "info": "Select a destination for the Call To Action"
-          }, {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          }
-        ]
-      }
-    ],
+    "blocks": [],
     "presets": [
       {
-        "name": "hero-block",
+        "name": "Hero Block",
         "category": "Custom"
       }
     ]

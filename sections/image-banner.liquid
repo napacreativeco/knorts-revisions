@@ -46,7 +46,7 @@
     </div>
   {%- endif -%}
 
-  <moving-elm class="banner__content {% if section.settings.animation_moving_element %}animation-moving-elms{% endif %} page-full-width">
+  <moving-elm id="moving-{{ section.id }}" class="banner__content {% if section.settings.animation_moving_element %}animation-moving-elms{% endif %} page-full-width">
     <div class="banner__box content-container content-container--full-width-mobile">
       {%- for block in section.blocks -%}
 
