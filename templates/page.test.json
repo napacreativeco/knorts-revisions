@@ -3,7 +3,10 @@
     "a4460141-ecbc-41f2-bb54-b4ac43e4f029": {
       "type": "home--hero-block",
       "settings": {
-        "section_description": "Knitted, not woven."
+        "section_title": "Denim done different",
+        "section_description": "Knitted, not woven.",
+        "section_background_image": "shopify:\/\/shop_images\/Screen_Shot_2022-10-11_at_11.00.25_PM_3ccd8d51-69ba-4db2-9239-ca577dfe00de.png",
+        "section_link": "shopify:\/\/collections"
       }
     },
     "main": {
