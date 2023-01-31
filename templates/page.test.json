@@ -9,6 +9,15 @@
         "section_link": "shopify:\/\/collections"
       }
     },
+    "3a83e95d-6234-47e9-a948-1e7e40bc3dcc": {
+      "type": "home--hero-block",
+      "settings": {
+        "section_title": "BASICSNOT BASIC",
+        "section_description": "Double takes guaranteed.",
+        "section_background_image": "shopify:\/\/shop_images\/1_mobile_9R7A1485_1_68f1c14a-9de9-4af8-a0f4-636633db5732.jpg",
+        "section_link": "shopify:\/\/collections\/nice-knits"
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -19,6 +28,7 @@
   },
   "order": [
     "a4460141-ecbc-41f2-bb54-b4ac43e4f029",
+    "3a83e95d-6234-47e9-a948-1e7e40bc3dcc",
     "main"
   ]
 }
