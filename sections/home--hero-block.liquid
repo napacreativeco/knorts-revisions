@@ -24,15 +24,27 @@
   </div>
 </div>
 
+
+
 {% schema %}
   {
-    "name": "Hero",
-    "class": "home--hero--block",
-    "settings": [],
+    "name": "Hero Blocks",
+    "tag": "section",
+    "class": "section",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "About",
+        "label": "Heading"
+      }
+    ],
+
     "blocks": [
       {
+        "type": "column",
         "name": "Hero Block",
-        "type": "text",
         "settings": [
           {
             "type": "text",
@@ -52,12 +64,6 @@
             "label": "Image"
           }
         ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Hero",
-        "category": "Text"
       }
     ]
   }
