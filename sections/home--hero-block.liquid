@@ -1,0 +1,51 @@
+{% comment %} 1 {% endcomment %}
+<div class="hero--block--one block--image-banner" style="background: url('{{ template.settings.section_image | img_url }}'); background-size: cover;">
+  <div class="row-wrapper">
+    <div class="content-wrapper">
+      <h2>{{ section.settings.section_title }}</h2>
+      <p>{{ section.settings.section_description }}</p>
+      <a href="{{ section.settings.section__link }}" title="{{ section.settings.section_title }}">
+        {{ 'Shop' | escape }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% comment %} 2 {% endcomment %}
+<div class="hero--block--two block--image-banner" style="background: url('{{ template.settings.section_image | img_url }}'); background-size: cover;">
+  <div class="row-wrapper">
+    <div class="content-wrapper">
+      <h2>{{ section.settings.section_title }}</h2>
+      <p>{{ section.settings.section_description }}</p>
+      <a href="{{ section.settings.section__link }}" title="{{ section.settings.section_title }}">
+        {{ 'Shop' | escape }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "class": "home--hero--block",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Title"
+      }, {
+        "type": "text",
+        "id": "section_description",
+        "label": "Text"
+      }, {
+        "type": "page",
+        "id": "page",
+        "label": "Page"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

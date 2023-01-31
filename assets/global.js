@@ -22,6 +22,7 @@ function pageScroll() {
   // init scroll on page load
   autoScroll()
 }
+
 if (window.location.pathname == '/'){
   pageScroll()
 }
@@ -1090,13 +1091,16 @@ function animationText() {
 
 window.addEventListener('scroll', animationText ); 
 animationText();
-var offset = 40;
+var offset = 80;
+
+/* MOVING ELEMENT */
 class MovingElement extends HTMLElement{
   constructor(){
     super();
     this.originalPosition = this.parentElement.getBoundingClientRect().top + window.scrollY;
     this.initElementPosition = this.parentElement.getBoundingClientRect().top;
     this.threshholdPosition = window.innerWidth > 1000 ? (this.parentElement.offsetHeight - this.offsetHeight) * 93.5  / 100  :  (this.parentElement.offsetHeight - this.offsetHeight) * 93 / 100;
+    
     if (this.classList.contains('animation-moving-elms')) {
       if (this.initElementPosition <= offset) {
         this.classList.add('sticky');
@@ -1117,20 +1121,27 @@ class MovingElement extends HTMLElement{
   }
 
   movingElement(){
+
     let elementPosition = this.parentElement.getBoundingClientRect().top;
     let opacityElm = window.getComputedStyle(this).opacity;
+
     if (elementPosition <= offset) {
-      this.classList.add('sticky');
-      if ((Math.abs(elementPosition) + offset) > this.threshholdPosition) {
-        this.classList.add('absolute');
-      }else{
-        this.classList.remove('absolute');
-      }
-    }else{
+        this.classList.add('sticky');
+
+        if ((Math.abs(elementPosition) + offset) > this.threshholdPosition) {
+          this.classList.add('absolute');
+        }else{
+          this.classList.remove('absolute');
+        }
+
+    } else {
+
       if (elementPosition < window.innerHeight) {
         this.style.opacity = 1 - ((elementPosition - offset) / (this.originalPosition - offset));
       }
+
       this.classList.remove('sticky');
+    
     }
   }
 }
