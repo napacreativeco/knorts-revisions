@@ -1,25 +1,30 @@
-<style>
-  .hero--block {
-    min-height: 100vh;
-  }
-  .hero--block a {
-    color: #fff;
-  }
-</style>
+{% comment %}
+*
+* Hero Blocks
+*
+* [throne]
+{% endcomment %}
+<div
+  id="hero-block--{{ section.id }}"
+  class="hero--block block--image-banner"
+  style="background: url('{{ section.settings.section_background_image | img_url: '1600x' }}'); background-size: cover; background-position: center; display: flex; align-items: stretch;">
 
-
-{% comment %} 1 {% endcomment %}
-<div class="hero--block block--image-banner" style="background: url('{{ section.settings.section_background_image | img_url }}'); background-size: cover;">
   <div class="row-wrapper">
-    <div class="content-wrapper">
-      <h2>{{ section.settings.section_title }}</h2>
-      <p>{{ section.settings.section_description }}</p>
-      <a href="{{ section.settings.section_link }}" title="{{ section.settings.section_title }}">
-        {{ 'Shop' | escape }}
-      </a>
+    <div class="content-wrapper content--{{ section.id }}">
+
+      <div style="display: block;">
+        <h2>{{ section.settings.section_title }}</h2>
+        <p>{{ section.settings.section_description }}</p>
+        <a href="{{ section.settings.section_link }}" title="{{ section.settings.section_title }}">
+          {{ 'Shop' | escape }}
+        </a>
+      </div>
+
     </div>
+    
   </div>
 </div>
+
 
 
 {% schema %}
@@ -47,6 +52,16 @@
         "id": "section_link",
         "label": "Destination",
         "info": "Select a page or URL for the Call To Action"
+      },
+      {
+        "type": "range",
+        "id": "section_height",
+        "min": 100,
+        "max": 200,
+        "step": 10,
+        "unit": "vh",
+        "label": "Block Height",
+        "default": 100
       }
     ],
     "blocks": [],
