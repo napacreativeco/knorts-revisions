@@ -11,13 +11,14 @@ $(function() {
     //         duration: '100%'}).setPin(this,  {pushfollowers: false}).addTo(controller);
     // });
 
+    ScrollTrigger.refresh();
     jQuery('.content-wrapper').each(function() {
         let st = ScrollTrigger.create({
             trigger: this,
             pin: this,
-            start: "top center",
-            end: "50%",
-            pinSpacing: false
+            start: "50% 50%",
+            pinSpacing: false,
+            end: () => `+=${(this.parentElement.offsetHeight / 2) - this.offsetHeight}`,
         });
     });
 

@@ -9,12 +9,12 @@
   class="hero--block block--image-banner"
   style="background: url('{{ section.settings.section_background_image | img_url: '1600x' }}'); background-size: cover; background-position: center; display: flex; align-items: stretch;">
 
-  <div class="row-wrapper">
+  <div class="row-wrapper" style="height: {{ section.settings.section_height }}vh;">
     <div class="content-wrapper content--{{ section.id }}">
 
       <div style="display: block;">
-        <h2>{{ section.settings.section_title }}</h2>
-        <p>{{ section.settings.section_description }}</p>
+        <h2 class="banner__heading h0">{{ section.settings.section_title }}</h2>
+        <p class="banner__text">{{ section.settings.section_description }}</p>
         <a href="{{ section.settings.section_link }}" title="{{ section.settings.section_title }}">
           {{ 'Shop' | escape }}
         </a>
