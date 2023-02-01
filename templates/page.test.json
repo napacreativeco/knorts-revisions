@@ -6,7 +6,8 @@
         "section_title": "Knorts",
         "section_description": "Denim done different",
         "section_background_image": "shopify:\/\/shop_images\/FI_-_9KVgAE0J5N_1_731d02aa-393d-4866-b3c1-d7e5ebc7ea95.png",
-        "section_link": "shopify:\/\/collections"
+        "section_link": "shopify:\/\/collections",
+        "section_height": 100
       }
     },
     "3a83e95d-6234-47e9-a948-1e7e40bc3dcc": {
@@ -15,7 +16,8 @@
         "section_title": "The Albino Turtleneck Slit Dress",
         "section_description": "See what they're talking about...",
         "section_background_image": "shopify:\/\/shop_images\/sec2-bg.png",
-        "section_link": "shopify:\/\/collections\/nice-knits"
+        "section_link": "shopify:\/\/collections\/nice-knits",
+        "section_height": 200
       }
     },
     "main": {
