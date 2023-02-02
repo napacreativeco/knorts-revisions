@@ -3,7 +3,7 @@
   "wrapper": "section#wishlist.wishlist",
   "sections": {
     "main": {
-      "type": "throne--wishlist-template"
+      "type": "throne--wishlist--template"
     }
   },
   "order": [
