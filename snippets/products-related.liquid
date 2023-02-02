@@ -20,11 +20,14 @@
 <section class="product-related">
   <div class="collection section-{{ section.id }}-padding collection--full-width">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-full-width">
+
       {%- if heading != blank -%}
         <h2 class="title">{{ heading| upcase }}</h2>
       {%- endif -%}
+
     </div>
     <div class="">
+
       <ul id="Slider-{{ section.id }}" class="grid product-grid contains-card{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} 
         grid--{{ columns_desktop }}-col-desktop grid--{{ columns_mobile }}-col-tablet-down" role="list">
         {%- for product in collection.products limit: products_to_display -%}
@@ -38,6 +41,7 @@
           </li>
         {%- endfor -%}
       </ul>
+      
     </div>
   </div>
 </section>
