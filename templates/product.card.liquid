@@ -1,0 +1,69 @@
+{% comment %} 
+*
+* Product Card
+*
+* Currently being used to display individual products on the Wishlist page
+* /pages/wishlist/
+*
+* [throne]
+{% endcomment %}
+
+<li class="grid__item ajax-item">
+    <div class="product--card card card--standard card--media">
+        <div class="card__inner ratio">
+
+            {% comment %} Image {% endcomment %}
+            <div class="image card__media">
+                <img
+                    srcset="
+                    {%- if product.featured_media.width >= 720 -%}
+                        {{ product.featured_media | image_url: width: 720 }} 720w,
+                    {%- endif -%}
+                    {%- if product.featured_media.width >= 940 -%}
+                        {{ product.featured_media | image_url: width: 940 }} 940w,
+                    {%- endif -%}
+                    {%- if product.featured_media.width >= 1066 -%}
+                        {{ product.featured_media | image_url: width: 1066 }} 1066w,
+                    {%- endif -%}
+                    {{ product.featured_media | image_url }} {{ product.featured_media.width }}w"
+                    src="{{ product.featured_media | image_url: width: 533 }}"
+                
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+            
+                    alt="{{ product.featured_media.alt | escape }}"
+                    class="motion-reduce"
+                    {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                    width="100"
+                    height="100"
+                >
+            </div>
+
+            <div class="details">
+                {% comment %} Badge: Hidden {% endcomment %}
+                <div class="card__content">
+                    <div class="card__badge top right"></div>
+                </div>
+
+                {% comment %} title {% endcomment %}
+                <div>
+                    <h3 class="card__heading text-body uppercase">
+                        {{ product.title }}
+                    </h3>
+                </div>
+
+                {% comment %} Regular Price {% endcomment %}
+                <div class="price__regular">
+                    <span class="visually-hidden visually-hidden--inline">{{ 'Regular price' | escape }}</span>
+                    <span class="price-item price-item--regular">
+                        {{ product.price | money_without_trailing_zeros }}
+                    </span>
+                </div>
+
+
+            </div>
+
+
+
+        </div> 
+    </div>
+</li>

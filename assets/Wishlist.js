@@ -6,7 +6,7 @@ const GRID_LOADED_CLASS = 'loaded';
 const selectors = {
   button: '[button-wishlist]',
   grid: '[grid-wishlist]',
-  productCard: '.product-card',
+  productCard: '.product--card',
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,6 +27,7 @@ document.addEventListener('shopify-wishlist:init-buttons', (event) => {
   console.log('[Shopify Wishlist] Wishlist Buttons Loaded ✅', event.detail.wishlist);
 });
 
+// Works
 const fetchProductCardHTML = (handle) => {
   const productTileTemplateUrl = `/products/${handle}?view=card`;
   return fetch(productTileTemplateUrl)
@@ -36,11 +37,13 @@ const fetchProductCardHTML = (handle) => {
     const parser = new DOMParser();
     const htmlDocument = parser.parseFromString(text, 'text/html');
     const productCard = htmlDocument.documentElement.querySelector(selectors.productCard);
+    console.log('RESPONSE: ' + res);
     return productCard.outerHTML;
   })
   .catch((err) => console.error(`[Shopify Wishlist] Failed to load content for handle: ${handle}`, err));
 };
 
+// replaces page elements with new data
 const setupGrid = async (grid) => {
   const wishlist = getWishlist();
   const requests = wishlist.map(fetchProductCardHTML);
@@ -60,7 +63,8 @@ const setupButtons = (buttons) => {
   buttons.forEach((button) => {
     const productHandle = button.dataset.productHandle || false;
     if (!productHandle) return console.error('[Shopify Wishlist] Missing `data-product-handle` attribute. Failed to update the wishlist.');
-    if (wishlistContains(productHandle)) button.classList.add(BUTTON_ACTIVE_CLASS);
+    // if (wishlistContains(productHandle)) button.classList.add(BUTTON_ACTIVE_CLASS);
+
     button.addEventListener('click', () => {
       updateWishlist(productHandle);
       button.classList.toggle(BUTTON_ACTIVE_CLASS);

@@ -619,7 +619,7 @@
                 </a>
               </div>
               
-              {%- render 'throne--button--wishlist' -%}
+              {% comment %} {%- render 'throne--button--wishlist' product: product -%} {% endcomment %}
           {%- when 'price' -%} 
             <div class="no-js-hidden price hideOnMobile" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: false -%}

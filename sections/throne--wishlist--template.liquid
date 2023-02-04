@@ -1,26 +1,50 @@
-{% comment %}
-  Shopify Wishlist
-  Usage:
-    - Create a new page in the Shopify admin
-      - Admin > Online store > Pages > Add page
-    - Set the new page's template to: 'page.wishlist'
-    - Do NOT remove the `grid-wishlist` attribute
-  
-  Notes:
-  - The grid will be populated with product cards using Javascript
-  - Any content inside of the `[grid-wishlist]` element will be completely replaced by the product cards
-  
-  Tip:
-  - Place a loading element inside the `[grid-wishlist]` element and it will automatically be removed once the product cards have loaded
-  - Add any liquid code before/after the grid element
-{% endcomment %}
-<div class="wishlist__grid flex container" grid-wishlist>
-  {% comment %} Sample loading element {% endcomment %}
-  <p class="wishlist__loader full-width text-center">Loading...</p>
-</div>
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
 
-{% schema %}
-  {
-    "templates": ["page"]
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+ 
+{%- style -%}
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
   }
-{% endschema %}
+{%- endstyle -%}
+
+{% assign pageTitle = page.title | downcase %}
+<div class="section-{{ section.id }}-padding">
+  <h1 class="page-full-width main-page-title page-title h2">
+    {{ page.title | escape }}
+  </h1>
+  <div class="page-width page-width--narrow">
+    <div class="rte {% if pageTitle == 'stockists' %} page-stockists uppercase {% endif %}">
+      {{ page.content }}
+    </div>
+  </div>
+
+
+  {% comment %}
+    Shopify Wishlist
+    Usage:
+        - Create a new page in the Shopify admin
+        - Admin > Online store > Pages > Add page
+        - Set the new page's template to: 'page.wishlist'
+        - Do NOT remove the `grid-wishlist` attribute
+    
+    Notes:
+    - The grid will be populated with product cards using Javascript
+    - Any content inside of the `[grid-wishlist]` element will be completely replaced by the product cards
+    
+    Tip:
+    - Place a loading element inside the `[grid-wishlist]` element and it will automatically be removed once the product cards have loaded
+    - Add any liquid code before/after the grid element
+    {% endcomment %}
+    <div class="wishlist__grid wishlist--container" grid-wishlist>
+        {% comment %} Sample loading element {% endcomment %}
+        <p class="wishlist__loader full-width text-center">Loading...</p>
+    </div>
+
+
+</div>
