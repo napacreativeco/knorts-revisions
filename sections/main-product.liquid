@@ -436,13 +436,8 @@
             {%- endif -%}
           {% endcomment %}
 
-
-
-
-          {%- when 'custom_liquid' -%}
-            {{ block.settings.custom_liquid }}
-           
-
+            {%- when 'custom_liquid' -%}
+              {{ block.settings.custom_liquid }}
 
               {% comment %} 
               //
@@ -804,26 +799,28 @@
                 <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
                     {% assign downcase =  option.name | downcase %}
-                     {% if downcase == 'size' %}
-                        <label for="size-modal-section" class="size-chart">
-                          {{ option.name }}
-                          <svg style="margin-left: 5px;cursor: pointer;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="7" cy="7" r="7" fill="white"></circle>
-                          <path d="M9.357 5.302C9.357 3.905 8.279 3.102 7.036 3.102C5.76 3.102 4.726 3.938 4.726 5.302H6.156C6.156 4.796 6.453 4.389 7.036 4.389C7.586 4.389 7.927 4.774 7.927 5.291C7.927 5.533 7.784 5.797 7.608 6.028L6.794 7.073C6.508 7.447 6.376 7.744 6.376 8.217V8.547H7.806V8.316C7.806 8.129 7.894 7.898 8.004 7.755L8.818 6.677C9.126 6.27 9.357 5.852 9.357 5.302ZM7.85 11V9.537H6.332V11H7.85Z" fill="black"></path>
-                          </svg>
-                        </label>
-                      
-                        {% comment %}
-                        // Pants Size Guide: Link
-                        // [throne]
-                        {% endcomment %}
-                        {% if product.handle or product.title contains 'pants' %}
-                          <div class="throne--view-size-guide">
-                            <a href="/pages/pants-sizing" title="{{ 'Size guide' | escape }}">{{ 'Guide' | escape }}</a>
-                          </div>
-                        {% endif %}
 
-                     {% endif %}
+                    {% if downcase == 'size' %}
+                      <label for="size-modal-section" class="size-chart">
+                        {{ option.name }}
+                        <svg style="margin-left: 5px;cursor: pointer;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="7" cy="7" r="7" fill="white"></circle>
+                        <path d="M9.357 5.302C9.357 3.905 8.279 3.102 7.036 3.102C5.76 3.102 4.726 3.938 4.726 5.302H6.156C6.156 4.796 6.453 4.389 7.036 4.389C7.586 4.389 7.927 4.774 7.927 5.291C7.927 5.533 7.784 5.797 7.608 6.028L6.794 7.073C6.508 7.447 6.376 7.744 6.376 8.217V8.547H7.806V8.316C7.806 8.129 7.894 7.898 8.004 7.755L8.818 6.677C9.126 6.27 9.357 5.852 9.357 5.302ZM7.85 11V9.537H6.332V11H7.85Z" fill="black"></path>
+                        </svg>
+                      </label>
+                    
+                      {% comment %}
+                      // Pants Size Guide: Link
+                      // [throne]
+                      {% endcomment %}
+                      {% if product.handle or product.title contains 'pants' %}
+                        <div class="throne--view-size-guide">
+                          <a href="/pages/pants-sizing" title="{{ 'Size guide' | escape }}">{{ 'Guide' | escape }}</a>
+                        </div>
+                      {% endif %}
+
+                    {% endif %}
+
                      {% comment %} Removed: hideOnMobile class {% endcomment %}
                     <fieldset id="{{ downcase }}-fieldset" class="js product-form__input product-form__input--{{ downcase }}  ">   
                       <legend class="form__label">
@@ -884,6 +881,7 @@
                         {%- endfor -%}
                       </div>
                     </fieldset>
+
                   {%- endfor -%}
                   <script type="application/json">
                     {{ product.variants | json }}
