@@ -21,7 +21,20 @@ function pageScroll() {
 
   // init scroll on page load
   autoScroll()
+
 }
+
+const detailsOverlay = document.getElementById('Details-menu-drawer-container');
+const burger = document.querySelector('header-drawer');
+
+burger.addEventListener('click', function() {
+  if (detailsOverlay.open == false) {
+    clearTimeout(scrolldelay);
+    console.log('click')
+    window.scrollBy(0,0);
+  }
+});
+
 
 if (window.location.pathname == '/'){
   pageScroll()
