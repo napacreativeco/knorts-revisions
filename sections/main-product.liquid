@@ -619,7 +619,9 @@
                 </a>
               </div>
               
-              {% comment %} {%- render 'throne--button--wishlist' product: product -%} {% endcomment %}
+            {% comment %}
+            //  PRICE
+            {% endcomment %}
           {%- when 'price' -%} 
             <div class="no-js-hidden price hideOnMobile" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: false -%}
@@ -653,15 +655,26 @@
                 {%- endif -%}
               </div>
             {%- endif -%}
+
+          {% comment %} 
+          // DESCRIPTION
+          {% endcomment %}
           {%- when 'description' -%}
             {%- if product.description != blank -%}
               <div class="product__description rte quick-add-hidden hideOnMobile"> 
                 {{ product.description }}
               </div>
             {%- endif -%}
+
+          {% comment %} 
+          // CUSTOM LIQUID - BLOCK INPUT
+          {% endcomment %}
           {%- when 'custom_liquid' -%}
             {{ block.settings.custom_liquid }}
 
+          {% comment %} 
+          // QUANTITY INPUT
+          {% endcomment %}
           {%- when 'quantity_selector' -%}
             <div class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}" {{ block.shopify_attributes }}>
               <label class="form__label" for="Quantity-{{ section.id }}">
@@ -733,7 +746,9 @@
             <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
 
 
-
+          {% comment %} 
+          // VARIANTS
+          {% endcomment %}
           {%- when 'variant_picker' -%}
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
@@ -862,6 +877,10 @@
                 </div>
               </div>
             </noscript>
+
+          {% comment %} 
+          // BUY BUTTONS
+          {% endcomment %} 
           {%- when 'buy_buttons' -%}
             <div {{ block.shopify_attributes }} class="buy-button-holder">
               <product-form class="product-form">
@@ -882,8 +901,7 @@
                       type="submit"
                       name="add"
                       class="product-form__submit button button--full-width button--primary"
-                      {% if product.selected_or_first_available_variant.available == false or hasSizes %}disabled{% endif %}
-                    >
+                      {% if product.selected_or_first_available_variant.available == false or hasSizes %}disabled{% endif %}>
                         <span>
                           {%- if hasSizes %}
                             SELECT A SIZE
@@ -915,8 +933,7 @@
                 {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %} available{% endif %}
                 data-root-url="{{ routes.root_url }}"
                 data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-                data-has-only-default-variant="{{ product.has_only_default_variant }}"
-              >
+                data-has-only-default-variant="{{ product.has_only_default_variant }}">
                 <template>
                   <pickup-availability-preview class="pickup-availability-preview">
                     {% render 'icon-unavailable' %}
@@ -930,6 +947,15 @@
             </div>
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
             
+            {% comment %} 
+            // ADD TO WISHLIST
+            {% endcomment %}
+            {% render 'throne--button--wishlist' %}
+
+
+            {% comment %} 
+            // SIZING DETAILS
+            {% endcomment %}
             {% if product.metafields.knorts.size_details != blank %}
               <div class="product__accordion accordion quick-add-hidden hideOnMobile">
                 <details id="Details-sizeDetails">
@@ -949,34 +975,42 @@
               </div>
             {% endif %}
             
-          {%- when 'rating' -%}
-            {%- if product.metafields.reviews.rating.value != blank -%}
-              {% liquid
-               assign rating_decimal = 0
-               assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-               if decimal >= 0.3 and decimal <= 0.7
-                assign rating_decimal = 0.5
-              elsif decimal > 0.7
-                assign rating_decimal = 1
-               endif
-              %}
-              <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
-                <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
-              </div>
-              <p class="rating-text caption">
-                <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
-              </p>
-              <p class="rating-count caption">
-                <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
-              </p>
-            {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
+            {% comment %} 
+            // RATING
+            {% endcomment %}
+            {%- when 'rating' -%}
+              {%- if product.metafields.reviews.rating.value != blank -%}
+                {% liquid
+                assign rating_decimal = 0
+                assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                if decimal >= 0.3 and decimal <= 0.7
+                  assign rating_decimal = 0.5
+                elsif decimal > 0.7
+                  assign rating_decimal = 1
+                endif
+                %}
+                <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+                  <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                </div>
+                <p class="rating-text caption">
+                  <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
+                </p>
+                <p class="rating-count caption">
+                  <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                  <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                </p>
+              {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
         
+
+        {% comment %} 
+        // MODEL ALSO WEARS
+        {% endcomment %}
         {% if product.metafields.knorts.model_also_wears.value != blank %}
           <div class="model-also-wears">
-             <span>Model Also Wears:</span>
+             <span>{{ 'Model Also Wears:' | escape }}</span>
+
             {% for item in product.metafields.knorts.model_also_wears.value %}
               <a href="{{ item.url }}" class="product-item full-unstyled-link">
                 {% for image in item.images limit: 1 %}
@@ -990,18 +1024,25 @@
                 </div>
               </a>
             {%- endfor -%}
+
           </div>
         {% endif %}
+
+        {% comment %}  
+        // OLD THEME CODE
         <a href="{{ product.url }}" class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
+
         <div id="recommended-holder" class="hideOnMobile">
               <h2 class="hideOnMobile">Model Also Wears:</h2>
         </div>
         <div id="recommendation-holder">
         </div>
-      </div>
+        {% endcomment %}
+        
+      </div>{% comment %} / PRODUCT-INFO {% endcomment %}
     </section>
 
 </div>

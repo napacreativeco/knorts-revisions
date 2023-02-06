@@ -25,6 +25,14 @@ document.addEventListener('shopify-wishlist:init-product-grid', (event) => {
 
 document.addEventListener('shopify-wishlist:init-buttons', (event) => {
   console.log('[Shopify Wishlist] Wishlist Buttons Loaded ✅', event.detail.wishlist);
+
+  const productTitle = document.getElementsByClassName('.card__heading');
+
+  const productHandle = event.dataset.productHandle || false;
+  
+  productTitle.addEventListener('click', function(e) {
+    window.location = 'www.google.com';
+  });
 });
 
 // Works
