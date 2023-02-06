@@ -176,13 +176,13 @@
       .product-form__input--color .option-wrapper { 
         justify-content: center;
       }
-      .fixed-section {
+      /* .fixed-section {
           position: sticky; 
           bottom: 0;
           background: black;
           min-height: 200px;
           max-height: 210px;
-      }
+      } */
       .mobile-test afterpay-placement {
         position: absolute;
         left: 10px;
@@ -231,7 +231,15 @@
     <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
   {%- endif -%}
 
+
+  {% comment %} 
+  // Product
+  {% endcomment %}
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    
+    {% comment %} 
+    // Slideshow
+    {% endcomment %}
     <section id="first-section" class="grid__item product__media-wrapper">
       <media-gallery id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %}class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
         <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
@@ -400,7 +408,7 @@
         {%- endif -%}
       </media-gallery>
       
-      <section class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %} hideOnDesktop" style="padding-bottom: 100px;">
+      <section class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %} hideOnDesktop">
         <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
           <div id="color-holder">
             
@@ -418,6 +426,7 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
 
+          {% comment %}  
           {%- when 'description' -%}
             {%- if product.description != blank -%}
               <h3>Description</h3> 
@@ -425,108 +434,124 @@
                 {{ product.description }}
               </div> 
             {%- endif -%}
+          {% endcomment %}
+
+
+
+
           {%- when 'custom_liquid' -%}
             {{ block.settings.custom_liquid }}
            
-          {%- when 'variant_picker' -%}
-            {%- unless product.has_only_default_variant -%}
-              {%- if block.settings.picker_type == 'button' -%}
-                <div id="fake-fieldsets" class="no-js-hidden hideOnDesktop" data-section="{{ section.id }}">
-                  {%- for option in product.options_with_values -%}
-                    {% assign downcase =  option.name | downcase %}
-                    {%- if downcase contains 'color' -%}
-                    <fieldset class="js product-form__input product-form__input--{{ downcase }}">
-                      <div id="fake-color-picker" class="option-wrapper">
-                        {%- for value in option.values -%}
-                          <div class="option-group">
-                            <input type="radio" id="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" c
-                              name="fake-{{ option.name }}"
-                              value="{{ value | escape }}"
-                              form="{{ product_form_id }}"
-                              {% if option.selected_value == value %}checked{% endif %}
-                            >
-                            {% if downcase contains 'color' %}
-                              {% assign color = value | remove: " " | downcase %}
-                                <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="option-color">
-                                  <span class="color-filter" data-value="{{ value }}" style="background-color: {{ color }}; background-image: url({{ color | handle | append: '.png' | file_url }})"></span>
-                                </label>
-                            {% else %}
-                              <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                {{ value }}
-                              </label>
-                            {% endif %}
+
+
+              {% comment %} 
+              //
+              // Color Picker (mobile)
+              // currently removed
+              {% endcomment %} 
+              {% comment %}  
+              {%- when 'variant_picker' -%}
+                {%- unless product.has_only_default_variant -%}
+                  {%- if block.settings.picker_type == 'button' -%}
+                    <div id="fake-fieldsets" class="no-js-hidden hideOnDesktop" data-section="{{ section.id }}">
+                      {%- for option in product.options_with_values -%}
+                        {% assign downcase =  option.name | downcase %}
+                        {%- if downcase contains 'color' -%}
+                        <fieldset class="js product-form__input product-form__input--{{ downcase }}">
+                          <div id="fake-color-picker" class="option-wrapper">
+                            {%- for value in option.values -%}
+                              <div class="option-group">
+                                <input type="radio" id="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" c
+                                  name="fake-{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% if option.selected_value == value %}checked{% endif %}
+                                >
+                                {% if downcase contains 'color' %}
+                                  {% assign color = value | remove: " " | downcase %}
+                                    <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="option-color">
+                                      <span class="color-filter" data-value="{{ value }}" style="background-color: {{ color }}; background-image: url({{ color | handle | append: '.png' | file_url }})"></span>
+                                    </label>
+                                {% else %}
+                                  <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                    {{ value }}
+                                  </label>
+                                {% endif %}
+                              </div>
+                            {%- endfor -%}
                           </div>
-                        {%- endfor -%}
+                        </fieldset>
+                        {% endif %} 
+                      {%- endfor -%}
+                      <script>
+                        const fakeRadios = document.querySelectorAll('input[name="fake-Color"]');
+                        for (var i = 0; i < fakeRadios.length; i++) {
+                          fakeRadios[i].addEventListener('change', function () {
+                              const rad = document.querySelector(`#${this.id.replace('fake-', '')}`);
+                              if (rad) rad.click();
+                          });
+                        }   
+                      
+                    </script>
+                    </div>
+                  {%- endif -%}
+                {%- endunless -%}
+
+              <noscript class="product-form__noscript-wrapper-{{ section.id }}">
+                <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+                  <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+                  <div class="select">
+                    <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
+                      {%- for variant in product.variants -%}
+                        <option
+                          {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                          {% if variant.available == false %}disabled{% endif %}
+                          value="{{ variant.id }}"
+                        >
+                          {{ variant.title }}
+                          {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                          - {{ variant.price | money | strip_html }}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+                </div>
+              </noscript>
+              {% endcomment %}
+
+              {% comment %} 
+              //
+              // Sizing Details (mobile)
+              // [throne -- edit]
+              // currently removed
+              {% endcomment %}
+              {% comment %}  
+              {%- when 'collapsible_tab' -%}
+                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                  <details id="Details-{{ block.id }}-{{ section.id }}">
+                    <summary style="justify-content: space-between;padding-right:10px">
+                      <div class="summary__title">
+                        {% render 'icon-accordion', icon: block.settings.icon %}
+                        <h2 class="h4 accordion__title">
+                          {{ block.settings.heading | default: block.settings.page.title }}
+                        </h2>
                       </div>
-                    </fieldset>
-                    {% endif %} 
-                  {%- endfor -%}
-                  <script>
-                    const fakeRadios = document.querySelectorAll('input[name="fake-Color"]');
-                    for (var i = 0; i < fakeRadios.length; i++) {
-                      fakeRadios[i].addEventListener('change', function () {
-                          const rad = document.querySelector(`#${this.id.replace('fake-', '')}`);
-                          if (rad) rad.click();
-                      });
-                    }   
-                   
-                </script>
+                      {% render 'icon-plus' %}
+                      {% render 'icon-minus' %} 
+                    </summary>
+
+                      <div class="accordion__content rte" id="ProductAccordion-sizeDetails">
+                        {{ product.metafields.knorts.size_details }}
+                      </div>
+
+                  </details>
                 </div>
-              {%- endif -%}
-            {%- endunless -%}
-
-            <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-              <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
-                <div class="select">
-                  <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
-                    {%- for variant in product.variants -%}
-                      <option
-                        {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
-                        {% if variant.available == false %}disabled{% endif %}
-                        value="{{ variant.id }}"
-                      >
-                        {{ variant.title }}
-                        {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-                        - {{ variant.price | money | strip_html }}
-                      </option>
-                    {%- endfor -%}
-                  </select>
-                  {% render 'icon-caret' %}
-                </div>
-              </div>
-            </noscript>
-
-            {% comment %} 
-            //
-            // Sizing Details (mobile)
-            // [throne -- edit]
-            //
-            {% endcomment %}
-            {%- when 'collapsible_tab' -%}
-              <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                <details id="Details-{{ block.id }}-{{ section.id }}">
-                  <summary style="justify-content: space-between;padding-right:10px">
-                    <div class="summary__title">
-                      {% render 'icon-accordion', icon: block.settings.icon %}
-                      <h2 class="h4 accordion__title">
-                        {{ block.settings.heading | default: block.settings.page.title }}
-                      </h2>
-                    </div>
-                    {% render 'icon-plus' %}
-                    {% render 'icon-minus' %} 
-                  </summary>
-
-                    <div class="accordion__content rte" id="ProductAccordion-sizeDetails">
-                      {{ product.metafields.knorts.size_details }}
-                    </div>
-                    
-                </details>
-              </div>
-          {%- endcase -%}
+              {% endcomment %}
+            {%- endcase -%}
         {%- endfor -%}
          
-        <ul id="Slider-Gallery-{{ section.id }}" class="product__media-list contains-media grid grid--peek list-unstyled slider hideOnDesktop" style="margin-top:20px;max-width: 100vw;margin-left: -10px;" role="list">
+          <ul id="Slider-Gallery-{{ section.id }}" class="product__media-list contains-media grid grid--peek list-unstyled slider hideOnDesktop" role="list">
             {%- liquid 
               assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
               assign media_count = product.media.size
@@ -565,9 +590,13 @@
             {%- endfor -%}
           </ul>
        </div>
-      
-    </section>
+      </section>
+
     </section> 
+
+    {% comment %} 
+    // Product Data
+    {% endcomment %}
     <section class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %} fixed-section">
       <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
@@ -579,6 +608,9 @@
           {% break %}
           {% endif %}
         {% endfor %} 
+
+
+        {% comment %}  
         <div class="mobile-test"> 
             {%- for block in section.blocks -%}
               {% if block.type == 'title' %}
@@ -599,9 +631,19 @@
               {% endif %} 
             {%- endfor -%}
         </div>
+        {% endcomment %}
+        
+
+        {% comment %} 
+        // Removed
+        // [throne]
+        {% endcomment %}
+        {% comment %}  
         <p class="hideOnDesktop" style="margin:2px 0;">
           Color: <span id="selected-color"></span>
         </p>
+        {% endcomment %}
+
         {%- for block in section.blocks -%}
           {%- case block.type -%}
           {%- when '@app' -%}
@@ -612,7 +654,7 @@
             </p> 
 
             {%- when 'title' -%}
-              <div class="product__title hideOnMobile" {{ block.shopify_attributes }}>
+              <div class="product__title" {{ block.shopify_attributes }}>
                 <h1 class="text-body">{{ product.title | upcase }}</h1>
                 <a href="{{ product.url }}" class="product__title">
                   <h2 class="text-body">
@@ -624,17 +666,17 @@
             {% comment %}
             //  PRICE
             {% endcomment %}
-          {%- when 'price' -%} 
-            <div class="no-js-hidden price hideOnMobile" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-              {%- render 'price', product: product, use_variant: true, show_badges: false -%}
-            </div>
-            <div {{ block.shopify_attributes }} class="product-form-installment hideOnMobile">
-              {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-              {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                {{ form | payment_terms }}
-              {%- endform -%}
-            </div>
+            {%- when 'price' -%} 
+              <div class="no-js-hidden price" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                {%- render 'price', product: product, use_variant: true, show_badges: false -%}
+              </div>
+              <div {{ block.shopify_attributes }} class="product-form-installment hideOnMobile">
+                {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  {{ form | payment_terms }}
+                {%- endform -%}
+              </div>
             {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
               <div class="product__tax caption rte hideOnMobile hideOnDesktop">
                 {%- if shop.taxes_included -%}
@@ -660,10 +702,11 @@
 
           {% comment %} 
           // DESCRIPTION
+          // removed class: hideOnModile from product__description
           {% endcomment %}
           {%- when 'description' -%}
             {%- if product.description != blank -%}
-              <div class="product__description rte quick-add-hidden hideOnMobile"> 
+              <div class="product__description rte quick-add-hidden"> 
                 {{ product.description }}
               </div>
             {%- endif -%}
@@ -752,18 +795,35 @@
           // VARIANTS
           {% endcomment %}
           {%- when 'variant_picker' -%}
+
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
+
                 <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
                     {% assign downcase =  option.name | downcase %}
                      {% if downcase == 'size' %}
-                       <label for="size-modal-section" class="size-chart">{{ option.name }} <svg style="margin-left: 5px;cursor: pointer;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="7" cy="7" r="7" fill="white"></circle>
-                        <path d="M9.357 5.302C9.357 3.905 8.279 3.102 7.036 3.102C5.76 3.102 4.726 3.938 4.726 5.302H6.156C6.156 4.796 6.453 4.389 7.036 4.389C7.586 4.389 7.927 4.774 7.927 5.291C7.927 5.533 7.784 5.797 7.608 6.028L6.794 7.073C6.508 7.447 6.376 7.744 6.376 8.217V8.547H7.806V8.316C7.806 8.129 7.894 7.898 8.004 7.755L8.818 6.677C9.126 6.27 9.357 5.852 9.357 5.302ZM7.85 11V9.537H6.332V11H7.85Z" fill="black"></path>
-                      </svg></label>
+                        <label for="size-modal-section" class="size-chart">
+                          {{ option.name }}
+                          <svg style="margin-left: 5px;cursor: pointer;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="7" cy="7" r="7" fill="white"></circle>
+                          <path d="M9.357 5.302C9.357 3.905 8.279 3.102 7.036 3.102C5.76 3.102 4.726 3.938 4.726 5.302H6.156C6.156 4.796 6.453 4.389 7.036 4.389C7.586 4.389 7.927 4.774 7.927 5.291C7.927 5.533 7.784 5.797 7.608 6.028L6.794 7.073C6.508 7.447 6.376 7.744 6.376 8.217V8.547H7.806V8.316C7.806 8.129 7.894 7.898 8.004 7.755L8.818 6.677C9.126 6.27 9.357 5.852 9.357 5.302ZM7.85 11V9.537H6.332V11H7.85Z" fill="black"></path>
+                          </svg>
+                        </label>
+                      
+                        {% comment %}
+                        // Pants Size Guide: Link
+                        // [throne]
+                        {% endcomment %}
+                        {% if product.handle or product.title contains 'pants' %}
+                          <div class="throne--view-size-guide">
+                            <a href="/pages/pants-sizing" title="{{ 'Size guide' | escape }}">{{ 'Guide' | escape }}</a>
+                          </div>
+                        {% endif %}
+
                      {% endif %}
-                    <fieldset id="{{ downcase }}-fieldset" class="js product-form__input product-form__input--{{ downcase }}  {% if downcase == 'color' %}hideOnMobile{% endif %}">   
+                     {% comment %} Removed: hideOnMobile class {% endcomment %}
+                    <fieldset id="{{ downcase }}-fieldset" class="js product-form__input product-form__input--{{ downcase }}  ">   
                       <legend class="form__label">
                         {% if downcase == 'length' and product.metafields.knorts.length_option != blank  %}
                           {{ option.name }}<span class="mark subheading">?</span>
@@ -827,7 +887,9 @@
                     {{ product.variants | json }}
                   </script>
                 </variant-radios>
+
               {%- else -%}
+
                 <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
                     <div class="product-form__input product-form__input--dropdown">
@@ -855,6 +917,7 @@
                     {{ product.variants | json }}
                   </script>
                 </variant-selects>
+
               {%- endif -%}
             {%- endunless -%}
 
@@ -959,7 +1022,7 @@
             // SIZING DETAILS
             {% endcomment %}
             {% if product.metafields.knorts.size_details != blank %}
-              <div class="product__accordion accordion quick-add-hidden hideOnMobile">
+              <div class="product__accordion accordion quick-add-hidden">
                 <details id="Details-sizeDetails">
                   <summary>
                     <div class="summary__title">
@@ -1049,6 +1112,10 @@
 
 </div>
 
+
+  {% comment %} 
+  // Modal
+  {% endcomment %}
   <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
     <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
       <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
