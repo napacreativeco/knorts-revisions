@@ -9,8 +9,8 @@
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
   {{ 'component-modal.css' | asset_url | stylesheet_tag }}
 <script>history.scrollRestoration = "manual"</script>
-<script>
 
+<script>
    window.addEventListener("load",  function(event) {
     var windowWidth = window.innerWidth; 
     if (windowWidth < 775) {
@@ -108,6 +108,7 @@
     {% assign windowWidth = windowWidth %}
   });
 </script> 
+
   {%- style -%}
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -318,6 +319,7 @@
                   endcapture
                   assign media_index = media_index | plus: 1
                 -%}
+
                 <li id="Slide-Thumbnails-{{ section.id }}-0" class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains featured_media.src %} thumbnail-list_item--variant{% endif %}" data-target="{{ section.id }}-{{ featured_media.id }}" data-media-position="{{ media_index }}">
                   <button class="thumbnail global-media-settings global-media-settings--no-shadow {% if featured_media.preview_image.aspect_ratio > 1 %}thumbnail--wide{% else %}thumbnail--narrow{% endif %}"
                     aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
@@ -342,6 +344,7 @@
                     >
                   </button>
                 </li>
+
               {%- endif -%}
               {%- for media in product.media -%}
                 {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
@@ -396,6 +399,7 @@
           </slider-component>
         {%- endif -%}
       </media-gallery>
+      
       <section class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %} hideOnDesktop" style="padding-bottom: 100px;">
         <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
           <div id="color-holder">
@@ -492,6 +496,13 @@
                 </div>
               </div>
             </noscript>
+
+            {% comment %} 
+            //
+            // Sizing Details (mobile)
+            // [throne -- edit]
+            //
+            {% endcomment %}
             {%- when 'collapsible_tab' -%}
               <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -505,20 +516,11 @@
                     {% render 'icon-plus' %}
                     {% render 'icon-minus' %} 
                   </summary>
-                  {% if product.metafields.knorts.details_content != blank and block.settings.heading == "DETAILS" %}
-                  <div class="accordion__content rte" id="ProductAccordion-detailsContent">
-                    {{ product.metafields.knorts.details_content }}
-                  </div>
-                  {%- elsif product.metafields.knorts.size_details != blank and block.settings.heading == "SIZING" -%}
-                  <div class="accordion__content rte" id="ProductAccordion-sizeDetails">
-                    {{ product.metafields.knorts.size_details }}
-                  </div>
-                  {%- else -%}
-                  <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                    {{ block.settings.content }}
-                    {{ block.settings.page.content }}
-                  </div>
-                  {%- endif -%}
+
+                    <div class="accordion__content rte" id="ProductAccordion-sizeDetails">
+                      {{ product.metafields.knorts.size_details }}
+                    </div>
+                    
                 </details>
               </div>
           {%- endcase -%}
