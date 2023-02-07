@@ -248,11 +248,11 @@ menu-drawer > details[open] > summary::before {
   padding: 1.3rem 1.25rem;
 }
 
-.menu-drawer-header {
+/* .menu-drawer-header {
   display: flex;
   padding: 47px 10px 15px;
   column-gap: 13rem;
-}
+} */
 
 .menu-drawer li .icon {
   width: 1rem;
@@ -269,7 +269,7 @@ menu-drawer > details[open] > summary::before {
   margin-top: 2px;
 }
 
-.menu-drawer__menu li ul {
+/* .menu-drawer__menu li ul {
   padding-bottom: 8px;
   margin-bottom: 15px;
-}
+} */
