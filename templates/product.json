@@ -75,7 +75,7 @@
         "columns_desktop": 4,
         "enable_video_looping": false,
         "padding_top": 0,
-        "padding_bottom": 12
+        "padding_bottom": 0
       }
     },
     "product-recommendations": {
