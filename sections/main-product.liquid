@@ -865,12 +865,13 @@
                         {% comment %}
                         // Pants Size Guide: Link
                         // [throne]
-                        {% endcomment %}
                         {% if product.handle or product.title contains 'pants' %}
                           <div class="throne--view-size-guide">
                             <a href="/pages/pants-sizing" title="{{ 'Size guide' | escape }}">{{ 'Guide' | escape }}</a>
                           </div>
                         {% endif %}
+                        
+                        {% endcomment %}
 
                       {% endif %}
 
