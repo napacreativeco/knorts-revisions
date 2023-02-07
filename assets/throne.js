@@ -11,7 +11,8 @@ $(function() {
     //         duration: '100%'}).setPin(this,  {pushfollowers: false}).addTo(controller);
     // });
 
-    ScrollTrigger.refresh();
+   
+
     jQuery('.content-wrapper').each(function() {
         let st = ScrollTrigger.create({
             trigger: this,
@@ -21,6 +22,17 @@ $(function() {
             end: () => `+=${(this.parentElement.offsetHeight / 2) - this.offsetHeight}`,
         });
     });
+    
+
+    var prodRec = document.getElementsByClassName('product-recommendations');
+    var mobileTitle = document.getElementsByClassName('pinned-info');
+    var firstUp = document.getElementsByClassName('product__media-list');
+
+    // let stayz = ScrollTrigger.create({
+    //     pin: mobileTitle,
+    //     trigger: firstUp,
+    //     duration: firstUp.height,
+    // }).setClassToggle("triggered");
 
 });
 

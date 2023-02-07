@@ -2944,7 +2944,7 @@ details-disclosure > details {
   margin: 12px 0;
 }
 
-.color-filter::after {
+/* .color-filter::after {
   content: attr(data-value);
   transition: 0.2s all;
   position: absolute;
@@ -2964,7 +2964,7 @@ details-disclosure > details {
   text-transform: capitalize;
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 
 .mobile-facets__label:hover .color-filter::after,
 .option-group label:hover .color-filter::after{

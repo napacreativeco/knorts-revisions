@@ -826,7 +826,10 @@ a.product__text {
   fill: #000;
 }
 
-/* Product popup */
+/*
+ * Popup Modal
+ *==============================
+ */
 
 .product-popup-modal {
   box-sizing: border-box;
