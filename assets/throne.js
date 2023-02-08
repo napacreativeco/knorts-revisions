@@ -25,7 +25,7 @@ $(function() {
     
 
     var prodRec = document.getElementsByClassName('product-recommendations');
-    var mobileTitle = document.getElementsByClassName('pinned-info');
+    var pinnedItem = document.getElementsByClassName('pinned-info');
     var firstUp = document.getElementsByClassName('product__media-list');
 
     // let stayz = ScrollTrigger.create({
@@ -33,6 +33,17 @@ $(function() {
     //     trigger: firstUp,
     //     duration: firstUp.height,
     // }).setClassToggle("triggered");
+
+    // let st = ScrollTrigger.create({
+    //     trigger: prodRec,
+    //     pinSpacing: false,
+    //     onEnter: ({progress, direction, isActive}) => {
+
+            
+    //         pinnedItem.style.position = 'relative';
+    //         console.log(progress, direction, isActive);
+    //     },
+    // });
 
 });
 
