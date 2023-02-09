@@ -6,8 +6,11 @@ window.addEventListener("load",  function(event) {
         const popupContent = document.querySelector('#popup1 .content');
         var dupNode = email_signup.cloneNode(true);
 
-        popupContent.appendChild(dupNode);
-        popupbtn?.click();
+        setTimeout(function() {
+          popupContent.appendChild(dupNode);
+          popupbtn?.click();
+        }, 7000);
+
    })
 </script>
 {%- style -%}
