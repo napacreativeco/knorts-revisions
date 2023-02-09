@@ -1361,10 +1361,10 @@ a.product__text {
   .product-form__input input:checked + label.option-color {
     background-color: white;
   }
-  /* .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
+  .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
     max-height: 560px;
     overflow: hidden;
-  } */
+  }
   .product-form__input input[type='radio']:checked + label {
     text-decoration: none;
     border: 1px solid white;

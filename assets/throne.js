@@ -1,18 +1,8 @@
 
 $(function() {
 
-    // Works, but not with Flexbox
-    // var controller = new ScrollMagic.Controller();
-
-    // jQuery('.content-wrapper').each(function() {
-    //     var scene = new ScrollMagic.Scene({ 
-    //         triggerElement: this,
-    //         triggerHook: 0.5,
-    //         duration: '100%'}).setPin(this,  {pushfollowers: false}).addTo(controller);
-    // });
-
    
-
+    // HERO PINNING
     jQuery('.content-wrapper').each(function() {
         let st = ScrollTrigger.create({
             trigger: this,
@@ -24,25 +14,32 @@ $(function() {
     });
     
 
-    var prodRec = document.getElementsByClassName('product-recommendations');
+    // PRODUCT INFO PINNING
+    var prodRec = document.getElementsByClassName('product__info-container');
     var pinnedItem = document.getElementsByClassName('pinned-info');
-    var firstUp = document.getElementsByClassName('product__media-list');
+    var firstUp = document.getElementById('product-data');
 
-    // let stayz = ScrollTrigger.create({
-    //     pin: mobileTitle,
-    //     trigger: firstUp,
-    //     duration: firstUp.height,
-    // }).setClassToggle("triggered");
+    // Works
+    let st = ScrollTrigger.create({
+        trigger: pinnedItem,
+        pin: pinnedItem,
+        start: "bottom 100%",
+        end: "bottom 100%",
+        pinSpacing: false,
+        scrub: 1,
+        endTrigger: prodRec,
+    });
+
+    var firstSect = document.getElementById("first-section");
 
     // let st = ScrollTrigger.create({
-    //     trigger: prodRec,
+    //     trigger: pinnedItem,
+    //     pin: pinnedItem,
+    //     start: "bottom center",
+    //     end: "top 100%",
     //     pinSpacing: false,
-    //     onEnter: ({progress, direction, isActive}) => {
-
-            
-    //         pinnedItem.style.position = 'relative';
-    //         console.log(progress, direction, isActive);
-    //     },
+    //     scrub: 1,
+    //     endTrigger: prodRec,
     // });
 
 });
