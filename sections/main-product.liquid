@@ -772,15 +772,17 @@
                           <modal-dialog id="PopupModal-sizeGuide" class="product-popup-modal">
                             <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
                               <button id="ModalClose-shipping" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+
+                              {% comment %} SIZE GUIDE {% endcomment %}
+
                               <div class="product-popup-modal__content-info center">
                                 <div class="small-hide medium-hide">
-                                  <img src="https://cdn.shopify.com/s/files/1/0123/7791/5492/files/sizechart.jpg?v=1669999946" alt="size chart">
+                                  {% comment %}old  <img src="https://cdn.shopify.com/s/files/1/0123/7791/5492/files/sizechart.jpg?v=1669999946" alt="size chart"> {% endcomment %}
+                                  <img src="{{ settings.sizeguide-desktop | img_url }}" alt="size chart">
                                 </div>
                                 <div class="large-up-hide">
-                                   <div class="" style="height: 600px;
-                                      overflow: auto;
-                                      max-height: 100%;">
-                                      <img src="https://cdn.shopify.com/s/files/1/0123/7791/5492/files/sizechart.jpg?v=1669999946" alt="size chart" style="height:100%">
+                                   <div class="" style="height: 600px;  overflow: auto; max-height: 100%;">
+                                      <img src="{{ settings.sizeguide-desktop | img_url }}" alt="size chart" style="height:100%">
                                     </div>
                                 </div>
                               </div>
