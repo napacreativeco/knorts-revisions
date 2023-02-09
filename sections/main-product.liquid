@@ -431,13 +431,8 @@
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
                 <div id="fake-fieldsets" class="no-js-hidden hideOnDesktop" data-section="{{ section.id }}">
-                  <div>
-                    <p class="hideOnDesktop" style="margin:2px 0;">
-                      Color: <span id="selected-color"></span>
-                    </p>
-                  </div>
 
-                  <div>
+                  
                     {%- for option in product.options_with_values -%}
                       {% assign downcase =  option.name | downcase %}
                       
@@ -478,7 +473,7 @@
                         });
                       }
                     </script>
-                  </div>
+              
 
 
                 </div>
@@ -669,7 +664,15 @@
                 {%- endif -%}
               </div>
             {%- endif -%}
+
+
           {%- when 'description' -%}
+
+
+            <p class="hideOnDesktop" style="margin:2px 0;">
+              Color: <span id="selected-color"></span>
+            </p>
+
             {%- if product.description != blank -%}
               <div class="product__description rte quick-add-hidden hideOnMobile"> 
                 {{ product.description }}
