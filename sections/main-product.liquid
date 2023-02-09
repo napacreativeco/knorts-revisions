@@ -396,6 +396,8 @@
           </slider-component>
         {%- endif -%}
       </media-gallery>
+
+      {% comment %} MOBILE {% endcomment %}
       <section class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %} hideOnDesktop">
         <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
           <div id="color-holder">
@@ -425,49 +427,62 @@
             {{ block.settings.custom_liquid }}
            
           {%- when 'variant_picker' -%}
+
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
                 <div id="fake-fieldsets" class="no-js-hidden hideOnDesktop" data-section="{{ section.id }}">
-                  {%- for option in product.options_with_values -%}
-                    {% assign downcase =  option.name | downcase %}
-                    {%- if downcase contains 'color' -%}
-                    <fieldset class="js product-form__input product-form__input--{{ downcase }}">
-                      <div id="fake-color-picker" class="option-wrapper">
-                        {%- for value in option.values -%}
-                          <div class="option-group">
-                            <input type="radio" id="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" c
-                              name="fake-{{ option.name }}"
-                              value="{{ value | escape }}"
-                              form="{{ product_form_id }}"
-                              {% if option.selected_value == value %}checked{% endif %}
-                            >
-                            {% if downcase contains 'color' %}
-                              {% assign color = value | remove: " " | downcase %}
-                                <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="option-color">
-                                  <span class="color-filter" data-value="{{ value }}" style="background-color: {{ color }}; background-image: url({{ color | handle | append: '.png' | file_url }})"></span>
-                                </label>
-                            {% else %}
-                              <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                {{ value }}
-                              </label>
-                            {% endif %}
+                  <div>
+                    <p class="hideOnDesktop" style="margin:2px 0;">
+                      Color: <span id="selected-color"></span>
+                    </p>
+                  </div>
+
+                  <div>
+                    {%- for option in product.options_with_values -%}
+                      {% assign downcase =  option.name | downcase %}
+                      
+                      {%- if downcase contains 'color' -%}
+                        <fieldset class="js product-form__input product-form__input--{{ downcase }}">
+                          <div id="fake-color-picker" class="option-wrapper">
+                            {%- for value in option.values -%}
+                              <div class="option-group">
+                                <input type="radio" id="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" c
+                                  name="fake-{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% if option.selected_value == value %}checked{% endif %}
+                                >
+                                {% if downcase contains 'color' %}
+                                  {% assign color = value | remove: " " | downcase %}
+                                    <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="option-color">
+                                      <span class="color-filter" data-value="{{ value }}" style="background-color: {{ color }}; background-image: url({{ color | handle | append: '.png' | file_url }})"></span>
+                                    </label>
+                                {% else %}
+                                  <label for="fake-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                    {{ value }}
+                                  </label>
+                                {% endif %}
+                              </div>
+                            {%- endfor -%}
                           </div>
-                        {%- endfor -%}
-                      </div>
-                    </fieldset>
-                    {% endif %} 
-                  {%- endfor -%}
-                  <script>
-                    const fakeRadios = document.querySelectorAll('input[name="fake-Color"]');
-                    for (var i = 0; i < fakeRadios.length; i++) {
-                      fakeRadios[i].addEventListener('change', function () {
-                          const rad = document.querySelector(`#${this.id.replace('fake-', '')}`);
-                          if (rad) rad.click();
-                      });
-                    }   
-                   
-                </script>
+                        </fieldset>
+                      {% endif %} 
+  
+                    {%- endfor -%}
+                    <script>
+                      const fakeRadios = document.querySelectorAll('input[name="fake-Color"]');
+                      for (var i = 0; i < fakeRadios.length; i++) {
+                        fakeRadios[i].addEventListener('change', function () {
+                            const rad = document.querySelector(`#${this.id.replace('fake-', '')}`);
+                            if (rad) rad.click();
+                        });
+                      }
+                    </script>
+                  </div>
+
+
                 </div>
+
               {%- endif -%}
             {%- endunless -%}
 
@@ -492,6 +507,8 @@
                 </div>
               </div>
             </noscript>
+
+
             {%- when 'collapsible_tab' -%}
               <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -564,8 +581,10 @@
           </ul>
        </div>
       
-    </section>
+      </section>
+
     </section> 
+    {% comment %} FIXED CONTAINER {% endcomment %}
     <section class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %} fixed-section">
       <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
@@ -577,6 +596,8 @@
           {% break %}
           {% endif %}
         {% endfor %} 
+
+        {% comment %} MOBILE {% endcomment %}
         <div class="mobile-test"> 
             {%- for block in section.blocks -%}
               {% if block.type == 'title' %}
@@ -597,9 +618,7 @@
               {% endif %} 
             {%- endfor -%}
         </div>
-        <p class="hideOnDesktop" style="margin:2px 0;">
-          Color: <span id="selected-color"></span>
-        </p>
+
         {%- for block in section.blocks -%}
           {%- case block.type -%}
           {%- when '@app' -%}
