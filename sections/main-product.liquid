@@ -31,10 +31,10 @@
         firstSect.addEventListener('scroll', (e) => {
             const maxScrollBottom = firstSect.scrollHeight - firstSect.clientHeight - 100;
             if (maxScrollBottom <= e.target.scrollTop) {
-                body.classList.add("forceOverflow");
+                  body.classList.add("forceOverflow");
             } else {
-                body.classList.remove("forceOverflow");
-                // body.scrollIntoView({behavior: "smooth", block: "start"});
+                  body.classList.remove("forceOverflow");
+                  body.scrollIntoView({behavior: "smooth", block: "start"});
             }
         }) 
         document.addEventListener('scroll', (e) => {
@@ -106,6 +106,8 @@
         }, 150);
     }
     {% assign windowWidth = windowWidth %}
+
+
   });
 </script> 
   {%- style -%}
@@ -878,6 +880,8 @@
                 </div>
               </div>
             </noscript>
+
+
           {%- when 'buy_buttons' -%}
             <div {{ block.shopify_attributes }} class="buy-button-holder">
               <product-form class="product-form">
@@ -1010,7 +1014,12 @@
         {% endif %}
 
       </div>
+
+
     </section>
+
+    {% comment %} HERE {% endcomment %}
+
 
 </div>
 
