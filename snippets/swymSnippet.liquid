@@ -10,7 +10,7 @@
   window.swymCart = {{ cart | json }};
   window.swymPageLoad = function(){
     window.SwymProductVariants = window.SwymProductVariants || {};
-    window.SwymHasCartItems = {{ cart.item_count | json }} > 0;
+    window.SwymHasCartItems = {{cart.item_count|json}} > 0;
     window.SwymPageData = {}, window.SwymProductInfo = {};
     {%- if product and template.name == 'product' -%}
     var variants = [];
@@ -90,7 +90,7 @@
 
   var swappName = ({{ shop.metafields.swym.app | json }} || "Wishlist");
   var swymJSObject = {
-    pid: {{ shop.metafields.swym.pid | json }} || "+bXGvU4Mju/aRgP6ofnCWu1y4noBuXUHzpXUPrDisgk=",
+    pid: {{ shop.metafields.swym.pid | json }} || "RzN9ZmtvC8HrkC70xowQG65RJlxuD0zqFmy6iQ+K8TQ=",
     interface: "/apps/swym" + swappName + "/interfaces/interfaceStore.php?appname=" + swappName
   };
   window.swymJSShopifyLoad = function(){
@@ -190,6 +190,9 @@ window.SwymCallbacks.push(function(swat) {
       });
     });
   }
+
+  // Get the money format for the store from shopify
+  window.SwymOverrideMoneyFormat = {{ shop.money_format | json}};
 </script>
 <style id="swym-product-view-defaults">
   /* Hide when not loaded */
