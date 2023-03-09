@@ -198,6 +198,7 @@
     },
     "b993ded3-4524-446c-8299-f1bc9047eaac": {
       "type": "newsletter-popup",
+      "disabled": true,
       "settings": {
         "custom_text_title": "SIGN UP FOR OUR NEWSLETTER RECEIVE 10% OFF",
         "image": "shopify:\/\/shop_images\/popup-img.png"
