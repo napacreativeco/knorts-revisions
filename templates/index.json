@@ -94,7 +94,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "NEW ARRIVALS",
-        "collection": "nice-knits",
+        "collection": "tweed",
         "products_to_show": 4,
         "columns_desktop": 4,
         "show_view_all": false,
