@@ -15,7 +15,7 @@
       "type": "home--hero-block",
       "settings": {
         "section_title": "Basics<br> not Basic",
-        "section_description": "Double takes garaunteed",
+        "section_description": "Double takes gauranteed",
         "section_background_image": "shopify:\/\/shop_images\/0_desk_9R7A1485_1_072908f3-dd83-4418-8e74-526ef1bc44ea.jpg",
         "section_background_image__mobile": "shopify:\/\/shop_images\/1_mobile_9R7A1485_1_68f1c14a-9de9-4af8-a0f4-636633db5732.jpg",
         "section_link": "shopify:\/\/collections\/nice-knits",
@@ -150,7 +150,6 @@
     },
     "18eae4e1-d1c3-4501-b0bc-d4658854fea3": {
       "type": "rich-text",
-      "disabled": true,
       "blocks": {
         "template--16659431882974__18eae4e1-d1c3-4501-b0bc-d4658854fea3-1670943833099c9f1a-0": {
           "type": "heading",
@@ -170,6 +169,7 @@
         "template--16659431882974__18eae4e1-d1c3-4501-b0bc-d4658854fea3-1670943833099c9f1a-0",
         "template--16659431882974__18eae4e1-d1c3-4501-b0bc-d4658854fea3-1670943833099c9f1a-1"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",
@@ -181,7 +181,7 @@
       "type": "apps",
       "blocks": {
         "d95fcdac-cdc7-4595-9d63-8906fc804d6a": {
-          "type": "shopify:\/\/apps\/instafeed-instagram-feed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "heading_size": 30,
             "feed_width": 100,
