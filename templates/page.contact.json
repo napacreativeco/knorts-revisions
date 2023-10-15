@@ -22,6 +22,7 @@
       "block_order": [
         "template--14456187191359__ea690ae6-9f80-4ae9-9222-efb3c8911c24-1665023384a9467412-1"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/ZG_o6trQ_1.png",
         "height": "adapt",
@@ -42,13 +43,13 @@
         "template--14456187191359__b8658a1f-c51a-4fb6-88ae-d0d501c78c61-1665023384ffdc349e-0": {
           "type": "heading",
           "settings": {
-            "heading": "<p>STUDIO<\/p>"
+            "heading": "<p>CONTACT<\/p>"
           }
         },
         "template--14456187191359__b8658a1f-c51a-4fb6-88ae-d0d501c78c61-1665023384ffdc349e-1": {
           "type": "text",
           "settings": {
-            "text": "<p>You are cordially invited to the ultimate behind the scenes experience at the Knorts headquarters in Los Angeles. We are finally opening our private studio to you and encourage you to touch our knit denim, dress your body in our knit denim, get styled in our knit denim by our designer, Eleanore Guthrie...basically, we want to hangout with you, so set up your appointment today :) Call (213) 529-6118 or fill out the form below with preferred date and time.<\/p>"
+            "text": "<p>GENERAL INQUIRIES:  info@knorts.com<br\/><br\/>WHOLESALE INQUIRIES : sales@knorts.com<\/p><p>PRESS INQUIRIES : press@knorts.com<\/p>"
           }
         },
         "53a3fc5a-559a-4b81-b284-997a3e8ae2b7": {
