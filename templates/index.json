@@ -5,7 +5,7 @@
       "settings": {
         "section_title": "Denim<br> done different",
         "section_description": "Knitted not woven",
-        "section_background_image": "shopify:\/\/shop_images\/Screen_Shot_2022-10-11_at_11.00.25_PM_3ccd8d51-69ba-4db2-9239-ca577dfe00de.png",
+        "section_background_image": "shopify:\/\/shop_images\/C3A8915.jpg",
         "section_background_image__mobile": "shopify:\/\/shop_images\/Screen_Shot_2022-10-11_at_11.00.25_PM_dc68f635-3506-4354-afc7-bf2f60c93380.png",
         "section_link": "shopify:\/\/collections\/all",
         "section_height": 100
@@ -183,8 +183,9 @@
         "d95fcdac-cdc7-4595-9d63-8906fc804d6a": {
           "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
-            "heading_size": 30,
-            "feed_width": 100,
+            "title": "",
+            "title_color": "",
+            "alignment": "center",
             "html_area": "<h2>@_KNORTS<\/h2>"
           }
         }
