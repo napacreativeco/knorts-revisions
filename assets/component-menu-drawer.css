@@ -1,4 +1,4 @@
-/*.header__icon--menu {
+.header__icon--menu {
   position: relative;
   width: 15px;
   height: 15px;
@@ -273,4 +273,3 @@ menu-drawer > details[open] > summary::before {
   padding-bottom: 8px;
   margin-bottom: 15px;
 }
-*/
