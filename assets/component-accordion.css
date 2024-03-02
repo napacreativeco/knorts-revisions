@@ -1,4 +1,4 @@
-/*.accordion summary {
+.accordion summary {
   display: flex;
   position: relative;
   line-height: 1;
@@ -51,4 +51,3 @@
 .accordion__content img {
   max-width: 100%;
 }
-*/
