@@ -179,7 +179,7 @@ menu-drawer > details[open] > summary::before {
 }
 
 .menu-drawer details[open] .menu-drawer__menu-item .icon-plus {
-  display: inline-block;
+  display: block;
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {
