@@ -171,7 +171,7 @@ menu-drawer > details[open] > summary::before {
 
 .js .menu-drawer__menu-item .icon-minus,
 .no-js .menu-drawer .icon-arrow {
-  display: block;
+  display: inline-block;
 }
 
 .menu-drawer details[open] .menu-drawer__menu-item .icon-minus {
@@ -179,7 +179,7 @@ menu-drawer > details[open] > summary::before {
 }
 
 .menu-drawer details[open] .menu-drawer__menu-item .icon-plus {
-  display: block;
+  display: inline-block;
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {
@@ -201,7 +201,7 @@ menu-drawer > details[open] > summary::before {
 }
 
 .no-js .menu-drawer__close-button {
-  display: block;
+  display: inline-block;
 }
 
 .menu-drawer__close-button .icon-arrow {
